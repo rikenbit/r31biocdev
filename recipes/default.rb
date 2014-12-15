@@ -1,15 +1,18 @@
-package "apt"
-#
-apt_repository "rrepository" do
-  uri "#{node['r31biocdev']['Rapturl']}"
-  distribution "precise/"
-  #components ["all"]
-  keyserver "keyserver.ubuntu.com"
-  key "E084DAB9"
-  action :add
-  notifies :run, "execute[apt-get update]", :immediately
+case node.platform
+when 'ubuntu'
+  package "apt"
+  #
+  apt_repository "rrepository" do
+    uri "#{node['r31biocdev']['Rapturl']}"
+    distribution "precise/"
+    #components ["all"]
+    keyserver "keyserver.ubuntu.com"
+    key "E084DAB9"
+    action :add
+    notifies :run, "execute[apt-get update]", :immediately
+  end
+  package "r-base"
 end
-package "r-base"
 
 # R version check script
 cookbook_file '/home/vagrant/showversion.R' do
@@ -58,9 +61,16 @@ cookbook_file '/home/vagrant/installBioconductor.R' do
   group "vagrant"
   mode "0755"
 end
+#
+r_prefix_path = ""
+if node[:r31biocdev].has_key?('r_prefix_path')
+  if node[:r31biocdev][:r_prefix_path] != nil
+    r_prefix_path = node[:r31biocdev][:r_prefix_path]
+  end
+end
 
 # install Bioconductor
 execute "install Bioconductor" do
-  command "R CMD BATCH /home/vagrant/installBioconductor.R"
+  command "#{r_prefix_path}R CMD BATCH /home/vagrant/installBioconductor.R"
   action :run
 end

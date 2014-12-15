@@ -1,5 +1,5 @@
 source("http://bioconductor.org/biocLite.R")
-useDevel()
+#useDevel()
 library(BiocInstaller)
 biocLite()
 

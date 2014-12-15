@@ -6,14 +6,19 @@ provisioner:
   name: chef_solo
 
 platforms:
-  - name: ubuntu-12.04
+  #- name: ubuntu-12.04
+  - name: centos-6.5
 
 suites:
   - name: default
     run_list:
-      - recipe[ubuntu-change-source-list]
+      #- recipe[ubuntu-change-source-list]
+      - recipe[yum]
+      #- recipe[apt]
       - recipe[timezone-ii]
-      - recipe[apt]
+      - recipe[java]
+      - recipe[build-essential]
+      - recipe[r-compiledfromsource]
       - recipe[r31biocdev::default]
     attributes:
       ubuntu:
@@ -22,4 +27,14 @@ suites:
         need_deb_src: false
         need_update: true
       tz: "Asia/Tokyo"
+      r_compiledfromsource:
+        sourceurl: "ftp://ftp.stat.math.ethz.ch/Software/R/R-devel.tar.gz"
+      r31biocdev:
+        r_prefix_path: "/usr/local/R-devel/bin/"
+      java:
+        install_flavor: "oracle"
+        jdk_version: 8
+        oracle:
+          accept_oracle_download_terms: true
+
 
