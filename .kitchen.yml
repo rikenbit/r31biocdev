@@ -15,7 +15,11 @@ platforms:
   - name: centos-7.0
     driver:
       vagrantfile_erb: Vagrantfile.erb
+      synced_folders:
+        - ['./result', '/tmp/result']
 
+busser:
+  sudo: false
 
 suites:
   - name: r31biocdev
@@ -44,5 +48,3 @@ suites:
         jdk_version: 8
         oracle:
           accept_oracle_download_terms: true
-
-

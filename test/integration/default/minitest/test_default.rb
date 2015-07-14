@@ -1,4 +1,6 @@
-require 'minitest/autorun'
+require "minitest/autorun"
+require "minitest/reporters"
+Minitest::Reporters.use! [Minitest::Reporters::JUnitReporter.new(reports_dir="/tmp/result/junit")]
 
 describe 'check R version' do
   it "check R version" do
