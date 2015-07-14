@@ -22,7 +22,7 @@ busser:
   sudo: false
 
 suites:
-  - name: r31biocdev
+  - name: default
     run_list:
       #- recipe[ubuntu-change-source-list]
       #- recipe[apt]
