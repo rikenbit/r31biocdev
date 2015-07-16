@@ -1,19 +1,3 @@
-case node.platform
-when 'ubuntu'
-  package "apt"
-  #
-  apt_repository "rrepository" do
-    uri "#{node['r31biocdev']['Rapturl']}"
-    distribution "precise/"
-    #components ["all"]
-    keyserver "keyserver.ubuntu.com"
-    key "E084DAB9"
-    action :add
-    notifies :run, "execute[apt-get update]", :immediately
-  end
-  package "r-base"
-end
-
 # R version check script
 cookbook_file '/home/vagrant/showversion.R' do
   source "showversion.R"
