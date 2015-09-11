@@ -65,7 +65,7 @@ suites:
       - recipe[r31biocdev::default]
     attributes:
       tz: "Asia/Tokyo"
-      #r_compiledfromsource:
-      #  sourceurl: "ftp://ftp.stat.math.ethz.ch/Software/R/R-devel.tar.gz"
+      r_compiledfromsource:
+        sourceurl: "ftp://ftp.stat.math.ethz.ch/Software/R/R-devel.tar.gz"
       r31biocdev:
         r_prefix_path: "/usr/local/R-devel/bin/"

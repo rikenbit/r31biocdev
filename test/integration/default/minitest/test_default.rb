@@ -5,7 +5,7 @@ Minitest::Reporters.use! [Minitest::Reporters::JUnitReporter.new(reports_dir="/t
 describe 'check R version' do
   it "check R version" do
     system('/usr/local/R-devel/bin/R CMD BATCH showversion.R')
-    assert system('grep "R version 3.2.2 Patched" showversion.Rout'), 'R version is not expected version. maybe r-base package is updated'
+    assert system('grep "R Under development (unstable)" showversion.Rout'), 'R version is not expected version. maybe r-base package is updated'
   end
 end
 
