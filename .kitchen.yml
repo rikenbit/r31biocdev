@@ -18,7 +18,7 @@ platforms:
       synced_folders:
         - ['./result', '/tmp/result']
     run_list:
-      - recipe[r31biocdev::change-apt]
+      - recipe[r-compiledfromsource::change-apt]
       - recipe[timezone-ii]
       #- recipe[ubuntu-change-source-list]
       #- recipe[apt]
@@ -66,6 +66,6 @@ suites:
     attributes:
       tz: "Asia/Tokyo"
       r_compiledfromsource:
-        sourceurl: "ftp://ftp.stat.math.ethz.ch/Software/R/R-devel.tar.gz"
+        sourceurl: "http://stat.ethz.ch/R/daily/R-devel.tar.gz"
       r31biocdev:
         r_prefix_path: "/usr/local/R-devel/bin/"
