@@ -13,7 +13,7 @@ describe 'check Bioconductor version' do
   it "check Bioconductor version" do
     system('/usr/local/R-devel/bin/R CMD BATCH showBioconductorVersion.R')
     # develop
-    assert system('grep "Bioconductor version 3.3 (BiocInstaller 1.21.2)" showBioconductorVersion.Rout'), 'Bioconductor version is not expected version. maybe Bioconductor package is updated'
+    assert system('grep "Bioconductor version 3.3 (BiocInstaller 1.21.3)" showBioconductorVersion.Rout'), 'Bioconductor version is not expected version. maybe Bioconductor package is updated'
     # stable
     #assert system('grep "Bioconductor version 2.14 (BiocInstaller 1.14.2)" showBioconductorVersion.Rout'), 'Bioconductor version is not expected version. maybe Bioconductor package is updated'
   end
