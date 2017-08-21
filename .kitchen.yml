@@ -19,7 +19,7 @@ platforms:
         - ['./result', '/tmp/result']
     run_list:
       - recipe[r-compiledfromsource::change-apt]
-      - recipe[timezone-ii]
+      - recipe[timezone_lwrp]
       #- recipe[ubuntu-change-source-list]
       #- recipe[apt]
     attributes:
@@ -59,7 +59,7 @@ suites:
     run_list:
       #- recipe[ubuntu-change-source-list]
       #- recipe[apt]
-      - recipe[timezone-ii]
+      - recipe[timezone_lwrp]
       - recipe[java]
       - recipe[build-essential]
       - recipe[r-compiledfromsource]
